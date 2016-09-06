@@ -25,8 +25,8 @@ class PaintingLead < ApplicationRecord
         ON artists_locations.artist_id = artists.id
         WHERE artists_locations.location_id = #{location_id}").
       group("artists.id").
-      order("last_location_lead_received_at DESC,
-        last_all_time_lead_received_at DESC,
+      order("last_location_lead_received_at ASC,
+        last_all_time_lead_received_at ASC,
         RANDOM()").
       limit(MAX_LEADS - current_leads_count)
 
